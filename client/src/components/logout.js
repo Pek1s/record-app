@@ -11,7 +11,7 @@ class Logout extends Component {
     e.preventDefault();
     this.props.closeModal();
     localStorage.removeItem('token');
-    store.dispatch({type: "CHANGE_REDIRECT", field: "config", payload: {redirect: "true"}});
+    store.dispatch({type: "CHANGE_DATA", field: "config", payload: {redirect: "true"}});
   }
 
   render() {

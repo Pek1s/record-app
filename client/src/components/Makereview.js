@@ -12,16 +12,16 @@ export default class Reviews extends Component {
   }
 
   handleChange(e) {
-    store.dispatch({type: "WRITE_REVIEW", field: "writereview", payload: {user: localStorage.getItem("username"), review: e.target.value}});
+    store.dispatch({type: "CHANGE_DATA", field: "writereview", payload: {user: localStorage.getItem("username"), review: e.target.value}});
   }
 
   handleReturn() {
-    store.dispatch({type: "CHANGE_REDIRECT", field: "redirectbutton", payload: "false"});
+    store.dispatch({type: "CHANGE_DATA", field: "redirectbutton", payload: "false"});
   }
 
  onSubmit(e) {
    e.preventDefault();
-   store.dispatch({type: "CHANGE_REDIRECT", field: "redirectbutton", payload: "false"});
+   store.dispatch({type: "CHANGE_DATA", field: "redirectbutton", payload: "false"});
    axios.post('/test-token',
    {token: localStorage.getItem("token")})
    .then((response) => {
@@ -37,11 +37,11 @@ export default class Reviews extends Component {
      {headers: {token: localStorage.getItem("token")}}
      )
      .then((res) => {
-       store.dispatch({type: "WRITE_REVIEW", field: "writereview", payload: {user: localStorage.getItem("username"), review: ""}});
+       store.dispatch({type: "CHANGE_DATA", field: "writereview", payload: {user: localStorage.getItem("username"), review: ""}});
        store.dispatch((dispatch) => {
          axios.get('/reviews/album/' + this.props.state.albumid)
          .then((resp) => {
-           dispatch({type: "LOAD_REVIEWS", field: "reviews", payload: resp.data});
+           dispatch({type: "CHANGE_DATA", field: "reviews", payload: resp.data});
          })
        })
      })

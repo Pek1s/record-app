@@ -12,7 +12,7 @@ export default class Reviews extends Component {
     store.dispatch((dispatch) => {
       axios.get('/reviews/album/' + this.props.state.albumid)
       .then((res) => {
-        dispatch({type: "LOAD_REVIEWS", field: "reviews", payload: res.data});
+        dispatch({type: "CHANGE_DATA", field: "reviews", payload: res.data});
       })
     })
   }

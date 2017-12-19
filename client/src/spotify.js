@@ -14,7 +14,7 @@ export function getAccessToken() {
 export function searchArtist(search){
   let url = 'https://api.spotify.com/v1/search?q=' + search + '&type=Artist&market=FI';
   let token = localStorage.getItem("spotifytoken");
- 
+
   axios.get(url,
   {
     headers: {
@@ -24,7 +24,7 @@ export function searchArtist(search){
   })
   .then(function(res) {
     console.log(res.data);
-    store.dispatch({type: "LOAD_ARTIST", field: "artists", payload: res.data.artists });
+    store.dispatch({type: "CHANGE_DATA", field: "artists", payload: res.data.artists });
   })
   .catch(function(err) {
     console.log(err);
@@ -44,7 +44,7 @@ export function searchAlbum(search){
   })
   .then(function(res) {
     console.log(res.data);
-    store.dispatch({type: "LOAD_ALBUM", field: "albums", payload: res.data.albums });
+    store.dispatch({type: "CHANGE_DATA", field: "albums", payload: res.data.albums });
   })
   .catch(function(err) {
     console.log(err);
@@ -64,7 +64,7 @@ export function getArtistAlbums(spotifyid) {
   })
   .then(function(res) {
     console.log(res.data);
-    store.dispatch({type: "LOAD_ALBUM", field: "artistalbums", payload: res.data });
+    store.dispatch({type: "CHANGE_DATA", field: "artistalbums", payload: res.data });
   })
   .catch(function(err) {
     console.log(err);
@@ -101,7 +101,7 @@ export function getSeveralAlbums(spotifyids) {
     }
   })
   .then(function(res) {
-    store.dispatch({type: "RECENT_REVIEWS", field: "recentreviews", payload: res.data });
+    store.dispatch({type: "CHANGE_DATA", field: "recentreviews", payload: res.data });
   })
   .catch(function(err) {
     console.log(err);

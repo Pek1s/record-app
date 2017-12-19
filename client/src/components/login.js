@@ -22,7 +22,7 @@ class Login extends Component {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("username", res.data.username);
       localStorage.setItem("userid", res.data.userid);
-      store.dispatch({type: "CHANGE_REDIRECT", field: "config", payload: {redirect: "false"}});
+      store.dispatch({type: "CHANGE_DATA", field: "config", payload: {redirect: "false"}});
     })
     .catch(function (err) {
       alert("Username or password is wrong");

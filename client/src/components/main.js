@@ -4,7 +4,7 @@ import Login from './login';
 import Logout from './logout';
 import axios from 'axios';
 
-store.dispatch({type: "CHANGE_REDIRECT", field: "config", payload: {redirect: "true"}});
+store.dispatch({type: "CHANGE_DATA", field: "config", payload: {redirect: "true"}});
 
 class Main extends Component {
   constructor(props){
@@ -18,9 +18,9 @@ class Main extends Component {
       {token: localStorage.getItem("token")})
         .then((res) => {
           if(res.data){
-            store.dispatch({type: "CHANGE_REDIRECT", field: "config", payload: {redirect: "false"}});
+            store.dispatch({type: "CHANGE_DATA", field: "config", payload: {redirect: "false"}});
           } else {
-            store.dispatch({type: "CHANGE_REDIRECT", field: "config", payload: {redirect: "true"}});
+            store.dispatch({type: "CHANGE_DATA", field: "config", payload: {redirect: "true"}});
           }
         })
   }

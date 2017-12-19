@@ -19,7 +19,7 @@ export default class AlbumDisplay extends Component {
    window.open('http://localhost:3002/spotify/access/#current_album=' + this.state.currentAlbum, 'Spotify Player','width=400 height=500');
   }
   handleClickTrue() {
-    store.dispatch({type: "CHANGE_REDIRECT", field: "redirectbutton", payload: "true"});
+    store.dispatch({type: "CHANGE_DATA", field: "redirectbutton", payload: "true"});
   }
 
   render(){
